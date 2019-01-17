@@ -2,7 +2,8 @@
 
 class ErrorsController
 {
-    public function()
+
+    public function error()
     {
         echo '404 error from ErrorsController';
     }

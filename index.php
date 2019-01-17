@@ -3,31 +3,36 @@
 // var_dump($_SERVER);
 // $path = str_replace($_SERVER['SCRIPT_NAME'], '', $_SERVER['REQUEST_URI']);
 // $path = explode('/',$_SERVER['REQUEST_URI']);
-// if(isset($_SERVER['']))
-$path = explode('/',$_SERVER['PATH_INFO']);
 echo '<pre>';
+if(!isset($_SERVER['PATH_INFO'])) $_SERVER['PATH_INFO'] = '/';
+
+print_r($_SERVER['PATH_INFO']);
+$path = explode('/',$_SERVER['PATH_INFO']);
 print_r($path);
 
-$classFile='';
-//$path[1] - Controllers
-//$path[2] - metodas
+$errorClass = 'ErrorsController';
+include_once('controllers/' . $errorClass . '.php');
+$errorObject = new $errorClass;
+
+$class='';
 if(isset($path[1])){
-$classFile = ucfirst($path[1]).'Controller'; //PostsController
+$class = ucfirst($path[1] ) .'Controller'; //PostsController
 }
-echo $classFile;
-if(file_exists('controllers/'.$classFile.'.php')){
-	include_once('controllers/'.$classFile.'.php');
-	$object = new $classFile;
+echo $class . '<br>';
+
+if(file_exists('controllers/'.$class.'.php')){
+	include_once('controllers/'.$class .'.php');
+	$object = new $class;
 	
 	if(!empty($path[2])){
 		$method = $path[2];//padaryti i mazasias raides
 		if(method_exists($object, $method)){
-			if(!empty($path[3])){
-				$object->$method($path[3]);
+			if(!empty($path[2])){
+				$object->$method($path[2]);
 			}
 		}
 		else{
-			echo '404';
+			$errorObject->error();
 		}
 	}
 	else{
@@ -36,7 +41,6 @@ if(file_exists('controllers/'.$classFile.'.php')){
 	
 }
 else{
-	
-	echo '404 error not found ';
+	$errorObject->error();
 }
 
