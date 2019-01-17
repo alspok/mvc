@@ -27,8 +27,8 @@ if(file_exists('controllers/'.$class.'.php')){
 	if(!empty($path[2])){
 		$method = $path[2];//padaryti i mazasias raides
 		if(method_exists($object, $method)){
-			if(!empty($path[2])){
-				$object->$method($path[2]);
+			if(!empty($path[3])){
+				$object->$method($path[3]);
 			}
 		}
 		else{
