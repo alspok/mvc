@@ -6,9 +6,9 @@
 echo '<pre>';
 if(!isset($_SERVER['PATH_INFO'])) $_SERVER['PATH_INFO'] = '/';
 
-print_r($_SERVER['PATH_INFO']);
+// print_r($_SERVER['PATH_INFO']);
 $path = explode('/',$_SERVER['PATH_INFO']);
-print_r($path);
+// print_r($path);
 
 $errorClass = 'ErrorsController';
 include_once('controllers/' . $errorClass . '.php');
@@ -18,7 +18,7 @@ $class='';
 if(isset($path[1])){
 $class = ucfirst($path[1] ) .'Controller'; //PostsController
 }
-echo $class . '<br>';
+// echo $class . '<br>';
 
 if(file_exists('controllers/'.$class.'.php')){
 	include_once('controllers/'.$class .'.php');
