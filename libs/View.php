@@ -7,8 +7,8 @@ class View
 
     public function render($templatePath)
     {
-        require_once($this->viewCatalogPath . 'header.html');
-        require($this->viewCatalogPath . $templatePath . '.php');
-        require_once($this->viewCatalogPath . 'footer.html');
+        require_once($this->viewCatalogPath . $templatePath . '.html');
+        require_once($this->viewCatalogPath . $templatePath . '.html');
+        require_once($this->viewCatalogPath . $templatePath . '.html');
     }
 }
