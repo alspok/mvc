@@ -2,7 +2,7 @@
 
 include_once('libs/Controller.php');
 include_once('libs/Database.php');
-include_once('models/Posts.php');
+include_once('helpers/FormHelper.php');
 
 class PostsController extends Controller{
 
@@ -43,6 +43,43 @@ class PostsController extends Controller{
 		$DB->select()->from('tbl_mvc')->connect()->getData();
 
 		$this->view->render('footer');
+	}
+
+	public function add()
+	{
+		$form = new FormHelper('POST', '');
+
+		$form->input([
+			'name' => 'title',
+			'type' => 'text',
+			'placeholder' => 'Title'
+		])->input([
+			'name' => 'submit',
+			'type' => 'submit',
+			'value' => 'Add'
+		])->input([
+			'name' => 'image',
+			'type' => 'text',
+			'placeholder' => 'Image Url'
+		])->input([
+			'name' => 'public',
+			'type' => 'checkbox',
+			'value' => '1'
+		]);
+
+		$form->selection([
+			'name' => 'selection',
+			'id' => '',
+			'class' => ''
+		])->selection([
+			'option1' => 'opt',
+			'option2' => 'opt',
+			'option3' => 'opt',
+			'option4' => 'opt'
+		]);
+
+		echo $form->get();
+		echo $form->selection();
 	}
 
 	public function show($id)
