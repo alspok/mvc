@@ -68,22 +68,36 @@ class Database
         return $this;
     }
 
+    public function update($tableName)
+    {
+        $this->query .= 'UPDATE ' . $tableName;
+        return $this;
+    }
+
+    public function set($column, $value, $operator)
+    {
+        $this->query .= ' SET ' . $column . $operator . $value;
+        return $this;
+    }
+
+
+
     public function putData()
     {
         $this->conn->query($this->query);
+        return $this;
     }
 
     public function getData()
     {
-        $this->result = $this->conn->query($this->query)->fetch_array(MYSQLI_NUM);
-        echo '<pre>';
-        print_r($this->result);
-    }
+        // $this->result = $this->conn->query($this->query)->fetch_array(MYSQLI_NUM);
+        $this->result = $this->conn->query($this->query);
 
-    public function getModData()
-    {
-        $this->result = $this->conn->query($this-select()->$this->from())->fetch_array(MYSQLI_NUM);
-        echo '<pre>';
-        print_r($this-result);
+        while($row = $this->result->fetch_array(MYSQLI_NUM)){
+            foreach($row as $item){
+                echo $item . '   ';
+            }
+            echo '<br>';
+        }
     }
 }

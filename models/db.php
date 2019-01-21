@@ -1,20 +1,6 @@
-<?php 
+<?php
 
-include_once('libs/Controller.php');
-include_once('libs/Database.php');
-include_once('models/Posts.php');
-
-class PostsController extends Controller{
-
-	// public function index(){
-	// 	echo 'visi irasai';
-	// }
-
-	// public function show($id){
-	// 	echo $id;
-	// }
-
-	public function index()
+public function index()
 	{
 		// $posts = new Posts();
 		// $this->view->posts = $posts->getAllPosts();
