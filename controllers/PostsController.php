@@ -1,8 +1,10 @@
 <?php 
 
 include_once('libs/Controller.php');
+include_once('controllers/PostsController.php');
 include_once('libs/Database.php');
 include_once('helpers/FormHelper.php');
+include_once('helpers/Helper.php');
 
 class PostsController extends Controller{
 
@@ -47,16 +49,15 @@ class PostsController extends Controller{
 
 	public function add()
 	{
-		$form = new FormHelper('POST', '');
+		$this->view->render('header');
+		$this->view->render('content');
+
+		$form = new FormHelper('POST', '/alspok/oop/mvc/index.php/posts/add/store');
 
 		$form->input([
 			'name' => 'title',
 			'type' => 'text',
 			'placeholder' => 'Title'
-		])->input([
-			'name' => 'submit',
-			'type' => 'submit',
-			'value' => 'Add'
 		])->input([
 			'name' => 'image',
 			'type' => 'text',
@@ -65,22 +66,72 @@ class PostsController extends Controller{
 			'name' => 'public',
 			'type' => 'checkbox',
 			'value' => '1'
+		])->input([
+			'name' => 'submit',
+			'type' => 'submit',
+			'value' => 'Add'
 		]);
 
 		$form->selection([
 			'name' => 'selection',
-			'id' => '',
-			'class' => ''
-		])->selection([
+			'id' => 'sel',
+			'class' => 'selection'
+		]);
+
+		$form->selectionOption([
 			'option1' => 'opt',
 			'option2' => 'opt',
 			'option3' => 'opt',
 			'option4' => 'opt'
 		]);
 
+		$form->textArea([
+			'rows' => 20,
+			'cols' => 30,
+			'text' => 'Some text in text area.'
+		]);
+
+		$form->input([
+			'name' => 'submit',
+			'type' => 'submit',
+			'value' => 'Add'
+		]);
+
 		echo $form->get();
-		echo $form->selection();
+
+		$this->view->render('footer');
 	}
+
+	public function store()
+	{
+		$addData = $_POST;
+		var_dump($addData);
+		$DB = new Database();
+		$DB->insert('tbl_mvc')->column('slug, title, content')->values('"' . $addData['title'] . '","' . $addData['image'] . '","' . $addData['selection'] . '"')->connect()->putData();
+		$DB->select()->from('tbl_mvc')->connect()->getData();
+
+	}
+
+	public function edit()
+	{
+
+	}
+
+	public function update()
+	{
+
+	}
+
+	public function delete()
+	{
+
+	}
+
+	public function test()
+    {
+		$slug = Helper::getSlug('Post pavadinimas');
+		echo $slug;
+    }
 
 	public function show($id)
 	{
@@ -88,3 +139,4 @@ class PostsController extends Controller{
 		echo $id;
 	}
 }
+

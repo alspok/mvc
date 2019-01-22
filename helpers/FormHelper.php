@@ -16,20 +16,46 @@ class FormHelper
                 $this->form .= $key . '="' . $attr . '" ';
             }
         $this->form .= '>';
-        var_dump($this->form);
+        // var_dump($this->form);
 
         return $this;
     }
-
+//Selecton TAG
     public function selection($attributes)
     {
 
         $this->form .= '<select ';
-        foreach ($attributes as $key => $attr) {
-            $this->form .= $key . '="' . $attr . '" ';
+        foreach($attributes as $key => $attr) {
+            $this->form .= $key . '="' . $attr . '">';
+        }
+        $this->form .= '>';
+        return $this;
+    }
+    
+    public function selectionOption($attributes){
+        foreach($attributes as $key => $attr){
+            $this->form .= '<option value="' . $key . '">' . $attr .'</option>';
         }
         $this->form .= '</select>';
-        var_dump($this->form);
+        // var_dump($this->form);
+        return $this;
+
+    }
+//End selecton TAG
+
+//Textarea TAG
+    public function textArea($attributes)
+    {
+        $this->form  .= '<textarea ';
+        $i = 0;
+        foreach($attributes as $key => $attr){
+            $this->form .= $key . '="' . $attr . '" ';
+            if($i++ === 2){
+                $this->form  .= '>' . $attr . '</textarea>';
+           }
+            // var_dump($this->form);
+        }
+        return $this;
     }
 
     public function get()

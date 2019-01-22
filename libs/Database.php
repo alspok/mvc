@@ -85,6 +85,7 @@ class Database
     public function putData()
     {
         $this->conn->query($this->query);
+        var_dump($this->query);
         return $this;
     }
 

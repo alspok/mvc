@@ -1,0 +1,14 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+	
+	"settings": {
+        "xdebug": {
+             "url": "http://http://localhost:8081/alspok/oop/mvc/",
+        }
+    }
+}
