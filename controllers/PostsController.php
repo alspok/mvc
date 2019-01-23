@@ -66,10 +66,6 @@ class PostsController extends Controller{
 			'name' => 'public',
 			'type' => 'checkbox',
 			'value' => '1'
-		])->input([
-			'name' => 'submit',
-			'type' => 'submit',
-			'value' => 'Add'
 		]);
 
 		$form->selection([
@@ -86,6 +82,7 @@ class PostsController extends Controller{
 		]);
 
 		$form->textArea([
+			'name' => 'textarea',
 			'rows' => 20,
 			'cols' => 30,
 			'text' => 'Some text in text area.'
@@ -105,9 +102,10 @@ class PostsController extends Controller{
 	public function store()
 	{
 		$addData = $_POST;
-		var_dump($addData);
+		var_dump(gettype($addData));
+
 		$DB = new Database();
-		$DB->insert('tbl_mvc')->column('slug, title, content')->values('"' . $addData['title'] . '","' . $addData['image'] . '","' . $addData['selection'] . '"')->connect()->putData();
+		$DB->insert('tbl_mvc')->column('slug, title, content')->values('"' . $addData['title'] . '","' . $addData['image'] . '","' . $addData['textarea'] . '"')->connect()->putData();
 		$DB->select()->from('tbl_mvc')->connect()->getData();
 
 	}

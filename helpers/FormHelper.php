@@ -50,7 +50,7 @@ class FormHelper
         $i = 0;
         foreach($attributes as $key => $attr){
             $this->form .= $key . '="' . $attr . '" ';
-            if($i++ === 2){
+            if($i++ === 3){
                 $this->form  .= '>' . $attr . '</textarea>';
            }
             // var_dump($this->form);

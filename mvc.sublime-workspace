@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"strto",
+				"strtolower"
+			],
+			[
 				"for",
 				"foreach\tforeach …"
 			]
@@ -21,10 +25,29 @@
 			}
 		},
 		{
+			"file": "/C/Users/Alvydas/AppData/Roaming/Sublime Text 3/Packages/User/Chrome.sublime-build",
+			"settings":
+			{
+				"buffer_size": 48,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "untitled.sublime-build"
+			}
+		},
+		{
 			"file": "helpers/FormHelper.php",
 			"settings":
 			{
-				"buffer_size": 862,
+				"buffer_size": 1570,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "helpers/Helper.php",
+			"settings":
+			{
+				"buffer_size": 134,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -33,9 +56,80 @@
 			"file": "controllers/PostsController.php",
 			"settings":
 			{
-				"buffer_size": 2002,
+				"buffer_size": 2971,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "mvc.sublime-project",
+			"settings":
+			{
+				"buffer_size": 158,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "libs/Database.php",
+			"settings":
+			{
+				"buffer_size": 2323,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Alvydas/AppData/Roaming/Sublime Text 3/Packages/User/Xdebug.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 478,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows",
+				"name": "Xdebug Context",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows",
+				"name": "Xdebug Watch",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows",
+				"name": "Xdebug Stack",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "=> C:\\wamp\\www\\alspok\\oop\\mvc\\index.php\n\t|+| 17\n",
+			"settings":
+			{
+				"buffer_size": 48,
+				"line_ending": "Windows",
+				"name": "Xdebug Breakpoint",
+				"read_only": true,
+				"scratch": true
 			}
 		}
 	],
@@ -70,6 +164,7 @@
 		"height": 322.0,
 		"history":
 		[
+			"import webbrowser; webbrowser.open(\"https://www.google.com\")",
 			"?",
 			"help",
 			"cmd"
@@ -87,23 +182,38 @@
 	"expanded_folders":
 	[
 		"/C/wamp/www/alspok/oop/mvc",
-		"/C/wamp/www/alspok/oop/mvc/helpers"
+		"/C/wamp/www/alspok/oop/mvc/controllers",
+		"/C/wamp/www/alspok/oop/mvc/helpers",
+		"/C/wamp/www/alspok/oop/mvc/libs",
+		"/C/wamp/www/alspok/oop/mvc/models",
+		"/C/wamp/www/alspok/oop/mvc/views"
 	],
 	"file_history":
 	[
+		"/C/wamp/www/alspok/oop/mvc/views/content.html",
+		"/C/wamp/www/alspok/oop/mvc/views/footer.html",
+		"/C/wamp/www/alspok/oop/mvc/views/header.html",
+		"/C/wamp/www/alspok/oop/mvc/models/Posts.php",
+		"/C/wamp/www/alspok/oop/mvc/controllers/UsersController.php",
 		"/C/wamp/www/alspok/oop/mvc/mvc.sublime-project",
 		"/C/Users/Alvydas/AppData/Roaming/Sublime Text 3/Packages/User/Xdebug.sublime-settings",
 		"/C/Users/Alvydas/AppData/Roaming/Sublime Text 3/Packages/Xdebug Client/Xdebug.sublime-settings"
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 29.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 108.0,
 		"where_history":
 		[
+			"C:\\wamp\\www\\alspok\\oop",
+			"C:\\wamp\\www\\alspok",
+			"C:\\wamp\\www\\alspok\\oop",
+			"C:\\wamp\\www\\alspok\\oop\\mvc",
+			"alspok",
+			"mvc"
 		]
 	},
 	"find_state":
@@ -111,6 +221,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"LLLLL",
+			"alert",
+			"<script",
+			"LLLLL",
+			"alert",
+			"script",
+			"alert",
+			"LLLLLL",
+			"LLLL",
+			"script"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -128,7 +248,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -144,8 +264,8 @@
 						"selection":
 						[
 							[
-								383,
-								383
+								559,
+								559
 							]
 						],
 						"settings":
@@ -157,24 +277,52 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "helpers/FormHelper.php",
+					"file": "/C/Users/Alvydas/AppData/Roaming/Sublime Text 3/Packages/User/Chrome.sublime-build",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 862,
+						"buffer_size": 48,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								530,
-								530
+								48,
+								48
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "helpers/FormHelper.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1570,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1569,
+								1569
 							]
 						],
 						"settings":
@@ -184,57 +332,288 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 120.0,
+						"translation.y": 60.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "controllers/PostsController.php",
+					"buffer": 3,
+					"file": "helpers/Helper.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2002,
+						"buffer_size": 134,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1756,
-								1756
+								70,
+								70
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "controllers/PostsController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2971,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								75,
+								77
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"translate_tabs_to_spaces": false,
+							"word_wrap": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1080.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "mvc.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 158,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								102,
+								102
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "libs/Database.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2323,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1951,
+								1951
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1400.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/C/Users/Alvydas/AppData/Roaming/Sublime Text 3/Packages/User/Xdebug.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 478,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								478,
+								478
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
 		},
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 8,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
 			]
 		},
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 10,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 48,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								48,
+								48
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 29.0
 	},
 	"input":
 	{
@@ -272,7 +651,7 @@
 		"rows":
 		[
 			0.0,
-			0.948665297741,
+			0.7,
 			1.0
 		]
 	},
@@ -285,11 +664,11 @@
 	{
 		"height": 0.0
 	},
-	"pinned_build_system": "",
+	"pinned_build_system": "Packages/User/Chrome.sublime-build",
 	"project": "mvc.sublime-project",
 	"replace":
 	{
-		"height": 0.0
+		"height": 54.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -327,20 +706,40 @@
 			"hide_conflict": false,
 			"restore_index":
 			{
-				"17":
+				"15":
 				{
 					"group": 0,
 					"index": 0
 				},
-				"22":
+				"16":
 				{
 					"group": 0,
 					"index": 1
 				},
-				"23":
+				"17":
+				{
+					"group": 0,
+					"index": 3
+				},
+				"20":
 				{
 					"group": 0,
 					"index": 2
+				},
+				"24":
+				{
+					"group": 0,
+					"index": 5
+				},
+				"25":
+				{
+					"group": 0,
+					"index": 4
+				},
+				"45":
+				{
+					"group": 0,
+					"index": 6
 				}
 			},
 			"restore_layout":
