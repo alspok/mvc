@@ -20,6 +20,7 @@ class FormHelper
 
         return $this;
     }
+    
 //Selecton TAG
     public function selection($attributes)
     {
@@ -39,9 +40,8 @@ class FormHelper
         $this->form .= '</select>';
         // var_dump($this->form);
         return $this;
-
     }
-//End selecton TAG
+//End selection TAG
 
 //Textarea TAG
     public function textArea($attributes)

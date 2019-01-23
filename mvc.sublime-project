@@ -9,6 +9,7 @@
 	"settings": {
         "xdebug": {
              "url": "http://localhost:8081/alspok/oop/mvc/index.php/posts/add",
+             "debug": true
         }
     }
 }
