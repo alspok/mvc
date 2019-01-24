@@ -2,7 +2,7 @@
 
 class View
 {
-    private$viewCatalogPath = 'C:/wamp/www/alspok/oop/mvc/views/';
+    private$viewCatalogPath = 'C:/wamp/www/alspok/mvc/views/';
 
 
     public function render($templatePath)

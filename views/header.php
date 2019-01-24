@@ -9,7 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
-  <script src="http://localhost:8081/alspok/oop/mvc/js/function.js"></script>
+  <script src="http://localhost:8081/alspok/mvc/js/function.js"></script>
 </head>
 <body>
  

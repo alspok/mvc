@@ -23,7 +23,7 @@
 			"file": "index.php",
 			"settings":
 			{
-				"buffer_size": 1201,
+				"buffer_size": 1210,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -31,8 +31,8 @@
 		{
 			"contents": "<?php\n\ninclude_once('libs/Controller.php');\ninclude_once('helpers/FormHelper.php');\n\nclass MainView extends Controller\n{\n\t$this->view->render('header');\n\t$this->view->render('content');\n\n\tpublic function main()\n\t{\n\t\techo 'in main view.';\n\t}\n\n\t$this->view->render('footer');\n}",
 			"file": "controllers/ViewController.php",
-			"file_size": 286,
-			"file_write_time": 131927390204912776,
+			"file_size": 300,
+			"file_write_time": 131928274334639786,
 			"settings":
 			{
 				"buffer_size": 275,
@@ -42,8 +42,8 @@
 		{
 			"contents": "<?php \n\ninclude_once('libs/Controller.php');\ninclude_once('controllers/PostsController.php');\ninclude_once('libs/Database.php');\ninclude_once('helpers/FormHelper.php');\ninclude_once('helpers/Helper.php');\n\nclass PostsController extends Controller{\n\n\t// public function index(){\n\t// \techo 'visi irasai';\n\t// }\n\n\t// public function show($id){\n\t// \techo $id;\n\t// }\n\n\tpublic function index()\n\t{\n\t\t// $posts = new Posts();\n\t\t// $this->view->posts = $posts->getAllPosts();\n\n\t\t// $this->view->title = '8484746';\n\t\t// $this->view->headline = \"headlaine\";\n\t\t$this->view->render('header');\n\t\t$this->view->render('content');\n\t\t\n\t\t$DB = new Database();\n\t\t$DB->select()->from('tbl_mvc')->connect()->getData();\n\n\t\t$DB = new Database();\n\t\t$DB->select('id, slug')->from('tbl_mvc')->where('id', '1', '=')->connect()->getData();\n\n\t\t$DB = new Database();\n\t\t$DB->insert('tbl_mvc')->column('slug, title, content')->values(\"'some', 'title', 'something'\")->connect()->putData();\n\t\t$DB->select()->from('tbl_mvc')->connect()->getData();\n\n\t\t$DB = new Database();\n\t\t$DB->update('tbl_mvc')->set('slug', \"'newslug'\", '=')->where('id', '10', '=')->connect()->putData();\n\t\t$DB->select()->from('tbl_mvc')->connect()->getData();\n\n\t\t$DB = new Database();\n\t\t$DB->delete('tbl_mvc')->where('id', '5', '=')->connect()->putData();\n\t\t$DB->select()->from('tbl_mvc')->connect()->getData();\n\n\t\t$this->view->render('footer');\n\t}\n\n\tpublic function add()\n\t{\n\t\t$this->view->render('header');\n\t\t$this->view->render('content');\n\n\t\t$form = new FormHelper('POST', '/alspok/oop/mvc/index.php/posts/add/store');\n\n\t\t$form->input([\n\t\t\t'name' => 'title',\n\t\t\t'type' => 'text',\n\t\t\t'placeholder' => 'Title'\n\t\t])->input([\n\t\t\t'name' => 'image',\n\t\t\t'type' => 'text',\n\t\t\t'placeholder' => 'Image Url'\n\t\t])->input([\n\t\t\t'name' => 'public',\n\t\t\t'type' => 'checkbox',\n\t\t\t'value' => '1'\n\t\t]);\n\n\t\t$form->selection([\n\t\t\t'name' => 'selection',\n\t\t\t'id' => 'sel',\n\t\t\t'class' => 'selection'\n\t\t]);\n\n\t\t$form->selectionOption([\n\t\t\t'option1' => 'opt',\n\t\t\t'option2' => 'opt',\n\t\t\t'option3' => 'opt',\n\t\t\t'option4' => 'opt'\n\t\t]);\n\n\t\t$form->textArea([\n\t\t\t'name' => 'textarea',\n\t\t\t'rows' => 20,\n\t\t\t'cols' => 30,\n\t\t\t'text' => 'Some text in text area.'\n\t\t]);\n\n\t\t$form->input([\n\t\t\t'name' => 'submit',\n\t\t\t'type' => 'submit',\n\t\t\t'value' => 'Add'\n\t\t]);\n\n\t\techo $form->get();\n\n\t\t$this->view->render('footer');\n\t}\n\n\tpublic function store()\n\t{\n\t\t$addData = $_POST;\n\t\tvar_dump($addData);\n\n\t\t$DB = new Database();\n\t\t$DB->insert('tbl_mvc')->column('slug, title, content')->values('\"' . $addData['title'] . '\",\"' . $addData['image'] . '\",\"' . $addData['textarea'] . '\"')->connect()->putData();\n\t\t$DB->select()->from('tbl_mvc')->connect()->getData();\n\n\t}\n\n\tpublic function edit()\n\t{\n\n\t}\n\n\tpublic function update()\n\t{\n\n\t}\n\n\tpublic function delete()\n\t{\n\n\t}\n\n\tpublic function test()\n    {\n\t\t$slug = Helper::getSlug('Post pavadinimas');\n\t\techo $slug;\n    }\n\n\tpublic function show($id)\n\t{\n\t\techo 'LOL';\n\t\techo $id;\n\t}\n}\n\n",
 			"file": "controllers/PostsController.php",
-			"file_size": 3065,
-			"file_write_time": 131927362734756977,
+			"file_size": 3207,
+			"file_write_time": 131928274334629748,
 			"settings":
 			{
 				"buffer_size": 2916,
@@ -201,12 +201,7 @@
 	},
 	"expanded_folders":
 	[
-		"/C/wamp/www/alspok/oop/mvc",
-		"/C/wamp/www/alspok/oop/mvc/controllers",
-		"/C/wamp/www/alspok/oop/mvc/helpers",
-		"/C/wamp/www/alspok/oop/mvc/libs",
-		"/C/wamp/www/alspok/oop/mvc/models",
-		"/C/wamp/www/alspok/oop/mvc/views"
+		"/C/wamp/www/alspok/mvc"
 	],
 	"file_history":
 	[
@@ -280,15 +275,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1201,
+						"buffer_size": 1210,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								611,
-								611
+								0,
+								0
 							]
 						],
 						"settings":

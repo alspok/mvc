@@ -1,6 +1,6 @@
 <?php
 
-include_once('C:/wamp/www/alspok/oop/mvc/libs/Database.php');
+include_once('C:/wamp/www/alspok/mvc/libs/Database.php');
 
 class Posts
 {

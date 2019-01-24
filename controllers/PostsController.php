@@ -52,7 +52,7 @@ class PostsController extends Controller{
 		$this->view->render('header');
 		$this->view->render('content');
 
-		$form = new FormHelper('POST', '/alspok/oop/mvc/index.php/posts/add/store');
+		$form = new FormHelper('POST', '/alspok/mvc/index.php/posts/add/store');
 
 		$form->input([
 			'name' => 'name',

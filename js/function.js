@@ -6,7 +6,7 @@ $(document).ready(function(){
 
 			$.ajax({
 				type: 'POST',
-				url: "alspok/oop/mvc/index.php/posts/test",
+				url: "alspok/mvc/index.php/posts/test",
 				data: {myusername: myusername},
 				cach: false,
 				success: function(data){
