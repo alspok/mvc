@@ -14,9 +14,9 @@ $errorClass = 'ErrorsController';
 include_once('controllers/' . $errorClass . '.php');
 $errorObject = new $errorClass;
 
-$viewClass = 'ViewController';
-include_once('controllers/' . $viewClass . '.php');
-$viewObject = new $viewClass;
+// $viewClass = 'ViewController';
+// include_once('controllers/' . $viewClass . '.php');
+// $viewObject = new $viewClass;
 
 xdebug_break();
 

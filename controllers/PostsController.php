@@ -24,7 +24,7 @@ class PostsController extends Controller{
 		// $this->view->title = '8484746';
 		// $this->view->headline = "headlaine";
 		$this->view->render('header');
-		$this->view->render('content');
+		$this->view->render('posts');
 		
 		$DB = new Database();
 		$DB->select()->from('tbl_mvc')->connect()->getData();
@@ -44,7 +44,7 @@ class PostsController extends Controller{
 		$DB->delete('tbl_mvc')->where('id', '5', '=')->connect()->putData();
 		$DB->select()->from('tbl_mvc')->connect()->getData();
 
-		$this->view->render('footer');
+		// $this->view->render('footer');
 	}
 
 	public function add()
@@ -55,9 +55,9 @@ class PostsController extends Controller{
 		$form = new FormHelper('POST', '/alspok/oop/mvc/index.php/posts/add/store');
 
 		$form->input([
-			'name' => 'title',
+			'name' => 'name',
 			'type' => 'text',
-			'placeholder' => 'Title'
+			'placeholder' => 'something'
 		])->input([
 			'name' => 'image',
 			'type' => 'text',
@@ -94,15 +94,15 @@ class PostsController extends Controller{
 			'value' => 'Add'
 		]);
 
-		echo $form->get();
+		// echo $form->get();
 
-		$this->view->render('footer');
+		// $this->view->render('footer');
 	}
 
 	public function store()
 	{
 		$addData = $_POST;
-		var_dump(gettype($addData));
+		var_dump($addData);
 
 		$DB = new Database();
 		$DB->insert('tbl_mvc')->column('slug, title, content')->values('"' . $addData['title'] . '","' . $addData['image'] . '","' . $addData['textarea'] . '"')->connect()->putData();
@@ -125,16 +125,25 @@ class PostsController extends Controller{
 
 	}
 
-	public function test()
-    {
-		$slug = Helper::getSlug('Post pavadinimas');
-		echo $slug;
-    }
+	// public function test()
+ //    {
+	// 	$slug = Helper::getSlug('Post pavadinimas');
+	// 	echo $slug;
+ //    }
 
 	public function show($id)
 	{
 		echo 'LOL';
 		echo $id;
+	}
+
+	public function test()
+	{
+		$username = $_POST['myusername'];
+
+		Helper::getslug($username);
+
+		echo $username;
 	}
 }
 
