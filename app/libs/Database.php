@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Controllers;
+
+use App\Libs;
+
 class Database
 {
     private $conn;

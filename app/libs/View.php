@@ -1,8 +1,12 @@
 <?php
 
+namespace App\Controllers;
+
+use App\Libs\Controller;
+
 class View
 {
-    private$viewCatalogPath = 'C:/wamp/www/alspok/mvc/views/';
+    private $viewCatalogPath = 'C:/wamp/www/alspok/mvc/app/views/';
 
 
     public function render($templatePath)

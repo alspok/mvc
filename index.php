@@ -1,35 +1,28 @@
 <?php
-//path peeversti  i mazasias
-// var_dump($_SERVER);
-// $path = str_replace($_SERVER['SCRIPT_NAME'], '', $_SERVER['REQUEST_URI']);
-// $path = explode('/',$_SERVER['REQUEST_URI']);
-echo '<pre>';
-if(!isset($_SERVER['PATH_INFO'])) $_SERVER['PATH_INFO'] = '/';
 
-// print_r($_SERVER['PATH_INFO']);
-$path = explode('/',$_SERVER['PATH_INFO']);
-// print_r($path);
+namespace App;
 
-$errorClass = 'ErrorsController';
-include_once('controllers/' . $errorClass . '.php');
+require_once ('vendor/autoload.php');
+use App\Controllers;
+// $testClass = 'App\Controllers\TestController';
+// $test = new $testClass;
+
+$errorClass = 'App\Controllers\ErrorsController';
 $errorObject = new $errorClass;
 
-// $viewClass = 'ViewController';
-// include_once('controllers/' . $viewClass . '.php');
-// $viewObject = new $viewClass;
+if(isset($_SERVER['PATH_INFO'])) $path = explode('/', $_SERVER['PATH_INFO']);
 
-xdebug_break();
-
-$class='';
 if(isset($path[1])){
-$class = ucfirst($path[1] ) .'Controller'; //PostsController
+$class = ucfirst($path[1] ) . 'Controller'; //PostsController
 }
-// echo $class . '<br>';
 
-if(file_exists('controllers/'.$class.'.php')){
-	include_once('controllers/'.$class .'.php');
+$controller = 'App\Controllers\\' . $class . '.php';
+var_dump($controller);
+// if(file_exists('./app/controllers/' . $class . '.php')){
+if(file_exists($controller)){
+	var_dump($class);
 	$object = new $class;
-	
+
 	if(!empty($path[2])){
 		$method = $path[2];//padaryti i mazasias raides
 

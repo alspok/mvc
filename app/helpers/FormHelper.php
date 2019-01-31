@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Controllers;
+
+use App\Helpers;
+
 class FormHelper
 {
     private $form = '';

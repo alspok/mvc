@@ -1,6 +1,11 @@
 <?php
 
-include_once('View.php');
+namespace App\Controllers;
+
+use App\Libs;
+
+
+// include_once('View.php');
 
 class Controller
 {

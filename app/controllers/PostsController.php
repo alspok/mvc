@@ -1,28 +1,17 @@
 <?php 
 
-include_once('libs/Controller.php');
-include_once('controllers/PostsController.php');
-include_once('libs/Database.php');
-include_once('helpers/FormHelper.php');
-include_once('helpers/Helper.php');
+namespace App\Controllers;
 
-class PostsController extends Controller{
+use App\Libs;
+use App\Helpers;
+use App\Models;
+use App\Views;
 
-	// public function index(){
-	// 	echo 'visi irasai';
-	// }
-
-	// public function show($id){
-	// 	echo $id;
-	// }
+class PostsController extends Controller
+{
 
 	public function index()
 	{
-		// $posts = new Posts();
-		// $this->view->posts = $posts->getAllPosts();
-
-		// $this->view->title = '8484746';
-		// $this->view->headline = "headlaine";
 		$this->view->render('header');
 		$this->view->render('posts');
 		
@@ -44,7 +33,7 @@ class PostsController extends Controller{
 		$DB->delete('tbl_mvc')->where('id', '5', '=')->connect()->putData();
 		$DB->select()->from('tbl_mvc')->connect()->getData();
 
-		// $this->view->render('footer');
+		$this->view->render('footer');
 	}
 
 	public function add()
@@ -96,7 +85,7 @@ class PostsController extends Controller{
 
 		// echo $form->get();
 
-		// $this->view->render('footer');
+		$this->view->render('footer');
 	}
 
 	public function store()
@@ -125,25 +114,19 @@ class PostsController extends Controller{
 
 	}
 
-	// public function test()
- //    {
-	// 	$slug = Helper::getSlug('Post pavadinimas');
-	// 	echo $slug;
- //    }
-
 	public function show($id)
 	{
 		echo 'LOL';
 		echo $id;
 	}
 
-	public function test()
+	public function logview()
 	{
-		$username = $_POST['myusername'];
-
-		Helper::getslug($username);
-
-		echo $username;
+		
+		$this->view->render('header');
+		$this->view->render('content');
+		$this->view->render('posts');
+		$this->view->render('footer');
 	}
 }
 
