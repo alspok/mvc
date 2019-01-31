@@ -1,9 +1,6 @@
 <?php
 
-namespace App;
-
 require_once ('vendor/autoload.php');
-use App\Controllers;
 // $testClass = 'App\Controllers\TestController';
 // $test = new $testClass;
 
