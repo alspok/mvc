@@ -1,47 +1,32 @@
 <?php
 
 require_once ('vendor/autoload.php');
-// $testClass = 'App\Controllers\TestController';
-// $test = new $testClass;
 
-$errorClass = 'App\Controllers\ErrorsController';
-$errorObject = new $errorClass;
+$errorObject = new App\Controllers\ErrorsController;
 
-if(isset($_SERVER['PATH_INFO'])) $path = explode('/', $_SERVER['PATH_INFO']);
+if (isset($_SERVER['PATH_INFO'])) {
 
-if(isset($path[1])){
-$class = ucfirst($path[1] ) . 'Controller'; //PostsController
-}
+   $path = explode('/', $_SERVER['PATH_INFO']);
 
-$controller = 'App\Controllers\\' . $class . '.php';
-var_dump($controller);
-// if(file_exists('./app/controllers/' . $class . '.php')){
-if(file_exists($controller)){
-	var_dump($class);
-	$object = new $class;
+   $classFile = '';
 
-	if(!empty($path[2])){
-		$method = $path[2];//padaryti i mazasias raides
-
-		if(method_exists($object, $method)){
-			if(!empty($path[3])){
-				$method = $path[3];
-				$object->$method($path[3]);
-			}
-			else{
-				$object->$method();
-			}
-		}
-		else{
-			$errorObject->error();
-		}
-	}
-	else{
-		$object->index();
-	}
-	
-}
-else{
-	$errorObject->error();
-}
-
+   if (isset($path[1])) {
+       $classFile = ucfirst($path[1]) . 'Controller';
+   }
+   $pathToClassFile = 'app/controllers/' . $classFile . '.php';
+   if (file_exists('app/controllers/' . $classFile . '.php')) {
+       $class = 'App\Controllers\\' . $classFile;
+       $object = new $class;
+       if (!empty($path[2])) {
+           $method = $path[2]; //TODO padaryti i mazasias
+           if (method_exists($object, $method)) {
+               if (isset($path[3])) {
+                   $id = $path[3];
+                   $object->$method($id);
+               } else {
+                   $object->$method();
+               }
+           } else $errorObject->error();
+       } else$object->index();
+   } else $errorObject->error();
+} else $errorObject->error();

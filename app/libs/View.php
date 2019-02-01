@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Libs\Controller;
+use App\Libs;
 
 class View
 {

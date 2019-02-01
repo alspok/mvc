@@ -1,4 +1,7 @@
 <?php
+namespace App\Controllers;
+
+use App\Helpers;
 
 $form = new FormHelper('POST', '');
 echo 'Name: ';

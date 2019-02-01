@@ -4,9 +4,8 @@ namespace App\Controllers;
 
 class ErrorsController
 {
-
     public function error()
     {
-        echo '<br>404 error from ErrorsController<br>';
+        echo '<br>Error from ErrorsController<br>';
     }
 }
