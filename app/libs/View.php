@@ -12,7 +12,8 @@ class View
     public function render($templatePath)
     {
         require_once($this->viewCatalogPath . $templatePath . '.php');
-        require_once($this->viewCatalogPath . $templatePath . '.php');
-        require_once($this->viewCatalogPath . $templatePath . '.php');
+        // require_once($this->viewCatalogPath . $templatePath . '.html');
+        // require_once($this->viewCatalogPath . $templatePath . '.php');
+        // require_once($this->viewCatalogPath . $templatePath . '.php');
     }
 }
