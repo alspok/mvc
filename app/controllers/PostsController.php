@@ -120,12 +120,12 @@ class PostsController extends Controller
 		echo $id;
 	}
 
-	public function logview()
+	public function registration()
 	{
 		
 		$this->view->render('header');
 		$this->view->render('content');
-		$this->view->render('posts');
+		$this->view->render('registration');
 		$this->view->render('footer');
 	}
 }
