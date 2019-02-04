@@ -1,9 +1,8 @@
 <?php
 
-namespace = App\Models;
+// namespace App\Controllers;
+namespace App;
 use App\Libs\Database;
-
-// include_once('C:/wamp/www/alspok/mvc/libs/Database.php');
 
 class Posts
 {

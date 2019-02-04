@@ -2,10 +2,9 @@
 
 namespace App\Controllers;
 
-use App\Libs;
-use App\Helpers;
-use App\Models;
-use App\Views;
+use App\Libs\Database;
+use App\Helpers\FormHelper;
+use App\Libs\Controller;
 
 class PostsController extends Controller
 {
@@ -89,14 +88,26 @@ class PostsController extends Controller
 	}
 
 	public function store()
-	{
+	{	
+		echo 'in postcontroller store function';
 		$addData = $_POST;
 		var_dump($addData);
 
 		$DB = new Database();
 		$DB->insert('tbl_mvc')->column('slug, title, content')->values('"' . $addData['title'] . '","' . $addData['image'] . '","' . $addData['textarea'] . '"')->connect()->putData();
 		$DB->select()->from('tbl_mvc')->connect()->getData();
+	}
 
+	public function log()
+	{
+		echo 'in log';
+		var_dump($_POST);
+	}
+
+	public function reg()
+	{
+		echo 'in reg';
+		var_dump($_POST);
 	}
 
 	public function edit()
@@ -120,12 +131,12 @@ class PostsController extends Controller
 		echo $id;
 	}
 
-	public function registration()
+	public function logreg()
 	{
 		
 		$this->view->render('header');
 		$this->view->render('content');
-		$this->view->render('registration');
+		$this->view->render('logreg');
 		$this->view->render('footer');
 	}
 }

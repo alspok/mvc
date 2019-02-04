@@ -13,20 +13,24 @@ if (isset($_SERVER['PATH_INFO'])) {
    if (isset($path[1])) {
        $classFile = ucfirst($path[1]) . 'Controller';
    }
-   $pathToClassFile = 'app/controllers/' . $classFile . '.php';
-   if (file_exists('app/controllers/' . $classFile . '.php')) {
+   if (file_exists('App\Controllers\\' . $classFile . '.php')) {
        $class = 'App\Controllers\\' . $classFile;
        $object = new $class;
        if (!empty($path[2])) {
-           $method = $path[2]; //TODO padaryti i mazasias
+           $method = $path[2];
            if (method_exists($object, $method)) {
                if (isset($path[3])) {
                    $id = $path[3];
                    $object->$method($id);
-               } else {
+               }
+               else {
                    $object->$method();
                }
-           } else $errorObject->error();
-       } else$object->index();
-   } else $errorObject->error();
-} else $errorObject->error();
+           }
+           else $errorObject->error('Error. Method not found.');
+       }
+       else$object->index();
+   }
+   else $errorObject->error('Error. Class file not found.');
+}
+else $errorObject->error('Error. PAPT_INFO not found.');

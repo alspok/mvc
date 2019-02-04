@@ -6,13 +6,17 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'App\\Controlers\\ViewsController' => $baseDir . '/app/controllers/ViewsController.php',
-    'App\\Controllers\\Controller' => $baseDir . '/app/libs/Controller.php',
-    'App\\Controllers\\Database' => $baseDir . '/app/libs/Database.php',
     'App\\Controllers\\ErrorsController' => $baseDir . '/app/controllers/ErrorsController.php',
-    'App\\Controllers\\FormHelper' => $baseDir . '/app/helpers/FormHelper.php',
     'App\\Controllers\\PostsController' => $baseDir . '/app/controllers/PostsController.php',
-    'App\\Controllers\\TestController' => $baseDir . '/app/controllers/TestController.php',
-    'App\\Controllers\\View' => $baseDir . '/app/libs/View.php',
-    'App\\Helpers\\Helper' => $baseDir . '/app/helpers/Helper.php',
+    'App\\Database' => $baseDir . '/app/libs/Database.php',
+    'App\\Db' => $baseDir . '/app/models/db.php',
+    'App\\Helper' => $baseDir . '/app/helpers/Helper.php',
+    'App\\Helpers\\FormHelper' => $baseDir . '/app/helpers/FormHelper.php',
+    'App\\Libs\\Controller' => $baseDir . '/app/libs/Controller.php',
+    'App\\Libs\\View' => $baseDir . '/app/libs/View.php',
+    'App\\PostInspect' => $baseDir . '/app/helpers/PostInspect.php',
+    'App\\Posts' => $baseDir . '/app/models/Posts.php',
+    'App\\TestController' => $baseDir . '/app/controllers/TestController.php',
+    'App\\UsersController' => $baseDir . '/app/controllers/UsersController.php',
+    'App\\ViewsController' => $baseDir . '/app/controllers/ViewsController.php',
 );

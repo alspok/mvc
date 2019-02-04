@@ -21,15 +21,19 @@ class ComposerStaticInitef918dea91ee038ef3af7d736a7e95a3
     );
 
     public static $classMap = array (
-        'App\\Controlers\\ViewsController' => __DIR__ . '/../..' . '/app/controllers/ViewsController.php',
-        'App\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/libs/Controller.php',
-        'App\\Controllers\\Database' => __DIR__ . '/../..' . '/app/libs/Database.php',
         'App\\Controllers\\ErrorsController' => __DIR__ . '/../..' . '/app/controllers/ErrorsController.php',
-        'App\\Controllers\\FormHelper' => __DIR__ . '/../..' . '/app/helpers/FormHelper.php',
         'App\\Controllers\\PostsController' => __DIR__ . '/../..' . '/app/controllers/PostsController.php',
-        'App\\Controllers\\TestController' => __DIR__ . '/../..' . '/app/controllers/TestController.php',
-        'App\\Controllers\\View' => __DIR__ . '/../..' . '/app/libs/View.php',
-        'App\\Helpers\\Helper' => __DIR__ . '/../..' . '/app/helpers/Helper.php',
+        'App\\Database' => __DIR__ . '/../..' . '/app/libs/Database.php',
+        'App\\Db' => __DIR__ . '/../..' . '/app/models/db.php',
+        'App\\Helper' => __DIR__ . '/../..' . '/app/helpers/Helper.php',
+        'App\\Helpers\\FormHelper' => __DIR__ . '/../..' . '/app/helpers/FormHelper.php',
+        'App\\Libs\\Controller' => __DIR__ . '/../..' . '/app/libs/Controller.php',
+        'App\\Libs\\View' => __DIR__ . '/../..' . '/app/libs/View.php',
+        'App\\PostInspect' => __DIR__ . '/../..' . '/app/helpers/PostInspect.php',
+        'App\\Posts' => __DIR__ . '/../..' . '/app/models/Posts.php',
+        'App\\TestController' => __DIR__ . '/../..' . '/app/controllers/TestController.php',
+        'App\\UsersController' => __DIR__ . '/../..' . '/app/controllers/UsersController.php',
+        'App\\ViewsController' => __DIR__ . '/../..' . '/app/controllers/ViewsController.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -4,8 +4,11 @@ namespace App\Controllers;
 
 class ErrorsController
 {
-    public function error()
+    public $errorMessage = '';
+
+    public function error($errorMessage)
     {
-        echo '<br>Error from ErrorsController<br>';
+        $this->erorMessage = $errorMessage;
+        echo $errorMessage;
     }
 }

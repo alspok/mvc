@@ -1,6 +1,12 @@
 <?php
 
-public function index()
+namespace App;
+use App\Libs\Database;
+
+class Db
+{
+
+	public function index()
 	{
 		// $posts = new Posts();
 		// $this->view->posts = $posts->getAllPosts();

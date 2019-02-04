@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Helpers;
+// namespace App\Helpers;
+namespace App;
 
 class Helper{
 
