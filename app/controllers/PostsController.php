@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Libs\Database;
 use App\Helpers\FormHelper;
+use App\Helpers\DbCompare;
 use App\Libs\Controller;
 
 class PostsController extends Controller
@@ -101,13 +102,17 @@ class PostsController extends Controller
 	public function log()
 	{
 		echo 'in log';
-		var_dump($_POST);
+		$dbInspect = new DbCompare('tbl_users', $_POST);
+		$dbInspect->getDbTable();
 	}
 
 	public function reg()
 	{
 		echo 'in reg';
-		var_dump($_POST);
+		$regData = $_POST;
+		var_dump($regData);
+		$DB = new Database();
+		$DB->insert('tbl_users')->column('name, password, email, active')->values('"' . $regData['regname'] . '","' . $regData['regpass'] . '","' . $regData['regemail'] . '","' . TRUE . '"')->connect()->putData();
 	}
 
 	public function edit()

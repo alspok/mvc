@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"path",
+				"pathToClass"
+			],
+			[
+				"Con",
+				"Controllers"
+			],
+			[
+				"C",
+				"Controllers"
+			],
+			[
 				"texta",
 				"textarea"
 			],
@@ -23,53 +35,52 @@
 			"file": "index.php",
 			"settings":
 			{
-				"buffer_size": 1210,
+				"buffer_size": 999,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "<?php\n\ninclude_once('libs/Controller.php');\ninclude_once('helpers/FormHelper.php');\n\nclass MainView extends Controller\n{\n\t$this->view->render('header');\n\t$this->view->render('content');\n\n\tpublic function main()\n\t{\n\t\techo 'in main view.';\n\t}\n\n\t$this->view->render('footer');\n}",
-			"file": "controllers/ViewController.php",
-			"file_size": 300,
-			"file_write_time": 131928274334639786,
+			"contents": "<?php\nnamespace App\\Controllers;\n\nuse App\\Helpers;\n\n$form = new FormHelper('POST', '');\necho 'Name: ';\n$form->input(['name' => 'name', 'type' => 'text']);\n// echo $form->get();\n\necho 'E.mail: ';\n$form->input(['name' => 'email', 'type' => 'text']);\n// echo $form->get();\n\necho 'Password: ';\n$form->input(['name' => 'pass', 'type' => 'password']);\n// echo $form->get();\n\necho 'Confirm password: ';\n$form->input(['name' => 'confpass', 'type' => 'password']);\n// echo $form->get();\n\n$form->input(['name' => 'submit', 'type' => 'submit']);\necho $form->get();\n",
+			"file": "app/views/posts.php",
+			"file_size": 578,
+			"file_write_time": 131935088186212678,
 			"settings":
 			{
-				"buffer_size": 275,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "<?php \n\ninclude_once('libs/Controller.php');\ninclude_once('controllers/PostsController.php');\ninclude_once('libs/Database.php');\ninclude_once('helpers/FormHelper.php');\ninclude_once('helpers/Helper.php');\n\nclass PostsController extends Controller{\n\n\t// public function index(){\n\t// \techo 'visi irasai';\n\t// }\n\n\t// public function show($id){\n\t// \techo $id;\n\t// }\n\n\tpublic function index()\n\t{\n\t\t// $posts = new Posts();\n\t\t// $this->view->posts = $posts->getAllPosts();\n\n\t\t// $this->view->title = '8484746';\n\t\t// $this->view->headline = \"headlaine\";\n\t\t$this->view->render('header');\n\t\t$this->view->render('content');\n\t\t\n\t\t$DB = new Database();\n\t\t$DB->select()->from('tbl_mvc')->connect()->getData();\n\n\t\t$DB = new Database();\n\t\t$DB->select('id, slug')->from('tbl_mvc')->where('id', '1', '=')->connect()->getData();\n\n\t\t$DB = new Database();\n\t\t$DB->insert('tbl_mvc')->column('slug, title, content')->values(\"'some', 'title', 'something'\")->connect()->putData();\n\t\t$DB->select()->from('tbl_mvc')->connect()->getData();\n\n\t\t$DB = new Database();\n\t\t$DB->update('tbl_mvc')->set('slug', \"'newslug'\", '=')->where('id', '10', '=')->connect()->putData();\n\t\t$DB->select()->from('tbl_mvc')->connect()->getData();\n\n\t\t$DB = new Database();\n\t\t$DB->delete('tbl_mvc')->where('id', '5', '=')->connect()->putData();\n\t\t$DB->select()->from('tbl_mvc')->connect()->getData();\n\n\t\t$this->view->render('footer');\n\t}\n\n\tpublic function add()\n\t{\n\t\t$this->view->render('header');\n\t\t$this->view->render('content');\n\n\t\t$form = new FormHelper('POST', '/alspok/oop/mvc/index.php/posts/add/store');\n\n\t\t$form->input([\n\t\t\t'name' => 'title',\n\t\t\t'type' => 'text',\n\t\t\t'placeholder' => 'Title'\n\t\t])->input([\n\t\t\t'name' => 'image',\n\t\t\t'type' => 'text',\n\t\t\t'placeholder' => 'Image Url'\n\t\t])->input([\n\t\t\t'name' => 'public',\n\t\t\t'type' => 'checkbox',\n\t\t\t'value' => '1'\n\t\t]);\n\n\t\t$form->selection([\n\t\t\t'name' => 'selection',\n\t\t\t'id' => 'sel',\n\t\t\t'class' => 'selection'\n\t\t]);\n\n\t\t$form->selectionOption([\n\t\t\t'option1' => 'opt',\n\t\t\t'option2' => 'opt',\n\t\t\t'option3' => 'opt',\n\t\t\t'option4' => 'opt'\n\t\t]);\n\n\t\t$form->textArea([\n\t\t\t'name' => 'textarea',\n\t\t\t'rows' => 20,\n\t\t\t'cols' => 30,\n\t\t\t'text' => 'Some text in text area.'\n\t\t]);\n\n\t\t$form->input([\n\t\t\t'name' => 'submit',\n\t\t\t'type' => 'submit',\n\t\t\t'value' => 'Add'\n\t\t]);\n\n\t\techo $form->get();\n\n\t\t$this->view->render('footer');\n\t}\n\n\tpublic function store()\n\t{\n\t\t$addData = $_POST;\n\t\tvar_dump($addData);\n\n\t\t$DB = new Database();\n\t\t$DB->insert('tbl_mvc')->column('slug, title, content')->values('\"' . $addData['title'] . '\",\"' . $addData['image'] . '\",\"' . $addData['textarea'] . '\"')->connect()->putData();\n\t\t$DB->select()->from('tbl_mvc')->connect()->getData();\n\n\t}\n\n\tpublic function edit()\n\t{\n\n\t}\n\n\tpublic function update()\n\t{\n\n\t}\n\n\tpublic function delete()\n\t{\n\n\t}\n\n\tpublic function test()\n    {\n\t\t$slug = Helper::getSlug('Post pavadinimas');\n\t\techo $slug;\n    }\n\n\tpublic function show($id)\n\t{\n\t\techo 'LOL';\n\t\techo $id;\n\t}\n}\n\n",
-			"file": "controllers/PostsController.php",
-			"file_size": 3207,
-			"file_write_time": 131928274334629748,
-			"settings":
-			{
-				"buffer_size": 2916,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "helpers/FormHelper.php",
-			"settings":
-			{
-				"buffer_size": 1575,
+				"buffer_size": 554,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "mvc.sublime-project",
+			"file": "app/controllers/PostsController.php",
 			"settings":
 			{
-				"buffer_size": 206,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"buffer_size": 2802,
+				"line_ending": "Windows"
 			}
 		},
 		{
+			"file": "app/controllers/ViewsController.php",
+			"settings":
+			{
+				"buffer_size": 541,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/helpers/FormHelper.php",
+			"settings":
+			{
+				"buffer_size": 1647,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "<?php\n\ninclude_once('View.php');\n\nclass Controller\n{\n    protected $view;\n\n    public function __construct()\n    {\n        $this->view = new View();\n    }\n    \n}\n",
 			"file": "libs/Controller.php",
+			"file_size": 176,
+			"file_write_time": 131933362746861867,
 			"settings":
 			{
 				"buffer_size": 162,
@@ -78,7 +89,10 @@
 			}
 		},
 		{
+			"contents": "<?php\n\nclass Helper{\n\n    public static function getSlug($line)\n    {\n        $line = strtolower($line);\n        return $line;\n    }\n}",
 			"file": "helpers/Helper.php",
+			"file_size": 143,
+			"file_write_time": 131933362746801713,
 			"settings":
 			{
 				"buffer_size": 134,
@@ -87,7 +101,10 @@
 			}
 		},
 		{
+			"contents": "<?php\n\nclass Database\n{\n    private $conn;\n    private $query = '';\n    private $result;\n\n    public function connect()\n    {\n        $this->conn = mysqli_connect('localhost', 'root', '', 'alspok_mvc_php');\n        if(!$this->conn) echo 'Connection error';\n        return $this;\n    }\n\n    public function select($target = '*')\n    {\n        $this->query = 'SELECT ' . $target . ' ';\n        return $this;\n    }\n\n    public function from($tableName)\n    {\n        $this->query .= 'FROM ' . $tableName . ' ';\n        return $this;\n    }\n\n    public function where($field, $value, $operator = '=')\n    {\n        $this->query .= 'WHERE ' . $field . ' ' . $operator . ' ' . $value;\n        return $this;\n    }\n\n    public function whereAnd($field, $value, $operator = '=')\n    {\n        $this->query .= 'AND ' . $field . ' ' . $operator . ' ';\n        return $this;\n    }\n\n    public function whereOr($field, $value, $operator = '=')\n    {\n        $this->query .= 'OR ' . $field . ' ' . $operator . ' ';\n        return $this;\n    }\n\n    public function insert($tableName)\n    {\n        $this->query .= 'INSERT INTO ' . $tableName . ' ';\n        return $this;\n    }\n\n    public function column($columns)\n    {\n\n        $this->query .= '(' . $columns . ')';\n        return $this;\n    }\n\n    public function values($values)\n    {\n        $this->query .= ' VALUES (' . $values . ')';\n        return $this;\n    }\n\n    public function delete($tableName)\n    {\n        $this->query .= 'DELETE FROM ' . $tableName . ' ';\n        return $this;\n    }\n\n    public function update($tableName)\n    {\n        $this->query .= 'UPDATE ' . $tableName;\n        return $this;\n    }\n\n    public function set($column, $value, $operator)\n    {\n        $this->query .= ' SET ' . $column . $operator . $value;\n        return $this;\n    }\n\n\n\n    public function putData()\n    {\n        $this->conn->query($this->query);\n        var_dump($this->query);\n        return $this;\n    }\n\n    public function getData()\n    {\n        // $this->result = $this->conn->query($this->query)->fetch_array(MYSQLI_NUM);\n        $this->result = $this->conn->query($this->query);\n\n        while($row = $this->result->fetch_array(MYSQLI_NUM)){\n            foreach($row as $item){\n                echo $item . '   ';\n            }\n            echo '<br>';\n        }\n    }\n}",
 			"file": "libs/Database.php",
+			"file_size": 2426,
+			"file_write_time": 131933362746861867,
 			"settings":
 			{
 				"buffer_size": 2323,
@@ -96,47 +113,12 @@
 			}
 		},
 		{
-			"contents": "",
+			"file": "mvc.sublime-project",
 			"settings":
 			{
-				"buffer_size": 0,
-				"line_ending": "Windows",
-				"name": "Xdebug Context",
-				"read_only": true,
-				"scratch": true
-			}
-		},
-		{
-			"contents": "",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows",
-				"name": "Xdebug Watch",
-				"read_only": true,
-				"scratch": true
-			}
-		},
-		{
-			"contents": "",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows",
-				"name": "Xdebug Stack",
-				"read_only": true,
-				"scratch": true
-			}
-		},
-		{
-			"contents": "=> C:\\wamp\\www\\alspok\\oop\\mvc\\index.php\n\t|+| 21\n",
-			"settings":
-			{
-				"buffer_size": 48,
-				"line_ending": "Windows",
-				"name": "Xdebug Breakpoint",
-				"read_only": true,
-				"scratch": true
+				"buffer_size": 198,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -201,10 +183,24 @@
 	},
 	"expanded_folders":
 	[
-		"/C/wamp/www/alspok/mvc"
+		"/C/wamp/www/alspok/mvc",
+		"/C/wamp/www/alspok/mvc/app",
+		"/C/wamp/www/alspok/mvc/app/controllers",
+		"/C/wamp/www/alspok/mvc/app/helpers",
+		"/C/wamp/www/alspok/mvc/app/libs",
+		"/C/wamp/www/alspok/mvc/app/models",
+		"/C/wamp/www/alspok/mvc/app/views"
 	],
 	"file_history":
 	[
+		"/C/wamp/www/alspok/mvc/mvc.sublime-project",
+		"/C/wamp/www/alspok/mvc/_index.php",
+		"/C/wamp/www/alspok/mvc/helpers/FormHelper.php",
+		"/C/wamp/www/alspok/mvc/app/helpers/FormHelper.php",
+		"/C/wamp/www/alspok/mvc/app/controllers/ErrorsController.php",
+		"/C/wamp/www/alspok/mvc/composer.json",
+		"/C/wamp/www/alspok/mvc/controllers/PostsController.php",
+		"/C/wamp/www/alspok/mvc/controllers/ViewController.php",
 		"/C/wamp/www/alspok/oop/mvc/views/mainpage.php",
 		"/C/wamp/www/alspok/oop/mvc/views/posts.php",
 		"/C/wamp/www/alspok/oop/mvc/mvc.sublime-project",
@@ -219,7 +215,7 @@
 	],
 	"find":
 	{
-		"height": 28.0
+		"height": 42.0
 	},
 	"find_in_files":
 	{
@@ -266,7 +262,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -275,7 +271,122 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1210,
+						"buffer_size": 999,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								498,
+								498
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/views/posts.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 554,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								50,
+								50
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/controllers/PostsController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2802,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1028,
+								1031
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/controllers/ViewsController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 541,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								30,
+								30
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/helpers/FormHelper.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1647,
 						"regions":
 						{
 						},
@@ -289,93 +400,6 @@
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 180.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "controllers/ViewController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 275,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								43,
-								43
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "controllers/PostsController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2916,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								44,
-								8
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false,
-							"word_wrap": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 960.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "helpers/FormHelper.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1575,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								509,
-								509
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -383,35 +407,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "mvc.sublime-project",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 206,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								206,
-								206
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -439,7 +435,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -467,7 +463,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -499,137 +495,51 @@
 					},
 					"stack_index": 8,
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
+				},
 				{
 					"buffer": 8,
+					"file": "mvc.sublime-project",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 198,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								150,
+								150
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
-							"word_wrap": false
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
-							"word_wrap": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 10,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
-							"word_wrap": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 48,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								48,
-								48
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Xdebug Client/Xdebug.tmLanguage",
-							"word_wrap": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				}
+			]
+		},
+		{
+			"sheets":
+			[
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 28.0
+		"height": 29.0
 	},
 	"input":
 	{
@@ -667,7 +577,7 @@
 		"rows":
 		[
 			0.0,
-			0.7,
+			0.948665297741,
 			1.0
 		]
 	},
@@ -688,7 +598,7 @@
 	"project": "mvc.sublime-project",
 	"replace":
 	{
-		"height": 52.0
+		"height": 54.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -726,45 +636,50 @@
 			"hide_conflict": false,
 			"restore_index":
 			{
-				"145":
-				{
-					"group": 0,
-					"index": 5
-				},
-				"149":
-				{
-					"group": 0,
-					"index": 1
-				},
-				"15":
+				"104":
 				{
 					"group": 0,
 					"index": 0
 				},
-				"152":
+				"109":
 				{
 					"group": 0,
-					"index": 4
+					"index": 5
 				},
-				"17":
-				{
-					"group": 0,
-					"index": 3
-				},
-				"18":
+				"110":
 				{
 					"group": 0,
 					"index": 6
 				},
-				"19":
+				"111":
+				{
+					"group": 0,
+					"index": 7
+				},
+				"124":
+				{
+					"group": 0,
+					"index": 3
+				},
+				"132":
 				{
 					"group": 0,
 					"index": 2
 				},
-				"21":
+				"136":
 				{
 					"group": 0,
-					"index": 7
+					"index": 1
+				},
+				"138":
+				{
+					"group": 0,
+					"index": 4
+				},
+				"139":
+				{
+					"group": 0,
+					"index": 8
 				}
 			},
 			"restore_layout":

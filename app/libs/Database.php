@@ -1,9 +1,6 @@
 <?php
 
-// namespace App\Controllers;
-namespace App;
-
-use App\Libs;
+namespace App\Libs;
 
 class Database
 {
@@ -99,11 +96,24 @@ class Database
         // $this->result = $this->conn->query($this->query)->fetch_array(MYSQLI_NUM);
         $this->result = $this->conn->query($this->query);
 
-        while($row = $this->result->fetch_array(MYSQLI_NUM)){
+        while($row = $this->result->fetch_array(MYSQLI_BOTH)){
             foreach($row as $item){
                 echo $item . '   ';
             }
             echo '<br>';
         }
+    }
+
+    public function get()
+    {
+        $dbData = [];
+        $this->result = $this->conn->query($this->query);
+
+        while($row = $this->result->fetch_array(MYSQLI_ASSOC)){
+            foreach($row as $item){
+                array_push($dbData, $item);
+            }
+        }
+        return $dbData;
     }
 }

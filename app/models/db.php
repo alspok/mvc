@@ -1,10 +1,22 @@
 <?php
 
-namespace App;
+namespace App\Models;
 use App\Libs\Database;
 
 class Db
 {
+	public $dbString;
+
+	public function __construct($dbString)
+	{
+		$this->dbString = $dbString;
+	}
+
+	public function dbHandler()
+	{
+		$DB = new Database();
+		$DB-> . $this->dbString;
+	}
 
 	public function index()
 	{

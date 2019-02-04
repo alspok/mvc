@@ -1,14 +1,12 @@
 <?php
-// namespace App\Controllers;
 namespace App\Helpers;
-
-use App\Helpers;
+use App\Controllers;
 ?>
 
 <h3>Login</h3>
 <?php
 // $form = new FormHelper('POST', '/alspok/mvc/app/helpers/postinspect.php');
-$form = new FormHelper('POST', 'App\Helper\PostInspect');
+$form = new FormHelper('POST', 'log');
 $form->input(['name' => 'logemail', 'type' => 'text', 'placeholder' => 'E.mail']);
 $form->input(['name' => 'logpass', 'type' => 'password', 'placeholder' => 'Password']);
 $form->input(['name' => 'logconfpass', 'type' => 'password', 'placeholder' => 'Conf. password']);
@@ -18,7 +16,7 @@ echo $form->get();
 
 <h3>Registration</h3>
 <?php
-$form = new FormHelper('POST', '/alspok/mvc/index.php/helpers/postinspect/reginspect.php');
+$form = new FormHelper('POST', 'reg');
 $form->input(['name' => 'regname', 'type' => 'text', 'placeholder' => 'Name']);
 $form->input(['name' => 'regemail', 'type' => 'text', 'placeholder' => 'E.mail']);
 $form->input(['name' => 'regpass', 'type' => 'password', 'placeholder' => 'Password']);
