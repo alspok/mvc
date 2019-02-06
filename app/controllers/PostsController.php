@@ -6,6 +6,7 @@ use App\Libs\Database;
 use App\Helpers\FormHelper;
 use App\Helpers\DbCompare;
 use App\Libs\Controller;
+use App\Models\Db;
 
 class PostsController extends Controller
 {
@@ -102,17 +103,21 @@ class PostsController extends Controller
 	public function log()
 	{
 		echo 'in log';
-		$dbInspect = new DbCompare('tbl_users', $_POST);
+		$query = new Database();
+		$queryString = $query->select()->from('tbl-users');
+		$dbInspect = new DbCompare($query, $_POST);
 		$dbInspect->getDbTable();
 	}
 
 	public function reg()
 	{
-		echo 'in reg';
 		$regData = $_POST;
-		var_dump($regData);
 		$DB = new Database();
-		$DB->insert('tbl_users')->column('name, password, email, active')->values('"' . $regData['regname'] . '","' . $regData['regpass'] . '","' . $regData['regemail'] . '","' . TRUE . '"')->connect()->putData();
+		$dbObject = $DB->insert('tbl_mvc_users')->column('name, password, email, activity')->values('"' . $regData['regname'] . '","' . $regData['regpass'] . '","' . $regData['regemail'] . '","' . TRUE . '"');
+		$queryString = $dbObject->getQuery();
+
+		$putQuery = new Db($queryString);
+		$putQuery->connect()->putData();
 	}
 
 	public function edit()

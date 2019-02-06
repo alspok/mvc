@@ -8,7 +8,7 @@
 	
 	"settings": {
         "xdebug": {
-             "url": "http://localhost:8081/alspok/mvc/index.php/posts",
+             "url": "http://localhost:8081/alspok/mvc/index.php",
              "debug": true
         }
     }

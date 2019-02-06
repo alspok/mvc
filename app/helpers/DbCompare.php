@@ -16,8 +16,6 @@ class DbCompare
 
 	public function getDbTable()
 	{
-
-		$dbString = 'select->from(' . $this->tblName . ')->connect()->get()';
 		$DB = new Db($dbString);
 		var_dump($DB->dbHandler());
 	}

@@ -5,17 +5,34 @@ use App\Libs\Database;
 
 class Db
 {
-	public $dbString;
+	public $queryString;
 
-	public function __construct($dbString)
+	public function __construct($queryString)
 	{
-		$this->dbString = $dbString;
+		$this->queryString = $queryString;
 	}
 
-	public function dbHandler()
+	public function connect()
+    {
+        $this->conn = mysqli_connect('localhost', 'root', '', 'alspok_mvc_php');
+        if(!$this->conn) echo 'Connection error';
+        return $this;
+    }
+
+     public function putData()
+    {
+        if($this->conn->query($this->queryString)){
+        	echo 'Reg data saved in DB';
+        	return $this;
+        }
+        else{
+        	echo 'Error writing to DB';
+        }
+    }
+
+	public function dbQuery()
 	{
-		$DB = new Database();
-		$DB-> . $this->dbString;
+		
 	}
 
 	public function index()

@@ -1,6 +1,5 @@
 <?php
 
-// namespace App\Controllers;
 namespace App\Helpers;
 
 use App\Controllers;

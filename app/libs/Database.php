@@ -4,15 +4,20 @@ namespace App\Libs;
 
 class Database
 {
-    private $conn;
-    private $query = '';
-    private $result;
+    public $conn;
+    public $query = '';
+    public $result;
 
     public function connect()
     {
         $this->conn = mysqli_connect('localhost', 'root', '', 'alspok_mvc_php');
         if(!$this->conn) echo 'Connection error';
         return $this;
+    }
+
+    public function getQuery()
+    {
+        return $this->query;
     }
 
     public function select($target = '*')
@@ -87,7 +92,6 @@ class Database
     public function putData()
     {
         $this->conn->query($this->query);
-        var_dump($this->query);
         return $this;
     }
 

@@ -7,7 +7,7 @@ use App\Libs\View;
 
 class View
 {
-    private $viewCatalogPath = 'C:/wamp/www/alspok/mvc/app/views/';
+    private $viewCatalogPath = 'C:/wamp64/www/alspok/mvc/app/views/';
 
     public function render($templatePath)
     {
