@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Libs\Database;
 use App\Helpers\FormHelper;
-use App\Helpers\DbCompare;
+use App\Helpers\DataCompare;
 use App\Libs\Controller;
 use App\Models\Db;
 
@@ -104,20 +104,29 @@ class PostsController extends Controller
 	{
 		echo 'in log';
 		$query = new Database();
-		$queryString = $query->select()->from('tbl-users');
-		$dbInspect = new DbCompare($query, $_POST);
+		$queryString = $query->select()->from('tbl_mvc_users');
+		$dbInspect = new DataCompare($query, $_POST);
 		$dbInspect->getDbTable();
 	}
 
 	public function reg()
 	{
 		$regData = $_POST;
-		$DB = new Database();
-		$dbObject = $DB->insert('tbl_mvc_users')->column('name, password, email, activity')->values('"' . $regData['regname'] . '","' . $regData['regpass'] . '","' . $regData['regemail'] . '","' . TRUE . '"');
-		$queryString = $dbObject->getQuery();
+		
+		$tblData = new DataCompare('tbl_mvc_users', $regData);
+		$tblData->getDbTable();
 
-		$putQuery = new Db($queryString);
-		$putQuery->connect()->putData();
+		if($tblData){
+			$DB = new Database();
+			$dbObject = $DB->insert('tbl_mvc_users')->column('name, password, email, activity')->values('"' . $regData['regname'] . '","' . $regData['regpass'] . '","' . $regData['regemail'] . '","' . TRUE . '"');
+			$queryString = $dbObject->getQuery();
+			$putQuery = new Db($queryString);
+			$putQuery->connect()->putData();
+			echo 'Registration success.';
+		}
+		else{
+			echo 'Already registred. Please login.';
+		}
 	}
 
 	public function edit()

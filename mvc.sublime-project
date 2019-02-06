@@ -5,10 +5,13 @@
 			"path": "."
 		}
 	],
+
+	
 	
 	"settings": {
         "xdebug": {
-             "url": "http://localhost:8081/alspok/mvc/index.php",
+             "url": "http://localhost:8081/alspok/mvc/index.php/posts/logreg",
+             "port": 9000,
              "debug": true
         }
     }

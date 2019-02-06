@@ -6,6 +6,7 @@ use App\Libs\Database;
 class Db
 {
 	public $queryString;
+	public $result;
 
 	public function __construct($queryString)
 	{
@@ -19,7 +20,7 @@ class Db
         return $this;
     }
 
-     public function putData()
+	public function putData()
     {
         if($this->conn->query($this->queryString)){
         	echo 'Reg data saved in DB';
@@ -30,10 +31,19 @@ class Db
         }
     }
 
-	public function dbQuery()
-	{
-		
-	}
+	public function getData()
+    {
+		$dbData = [];
+		$q = $this->connect();
+        $this->result = $q->query($this->query);
+
+        while($row = $this->result->fetch_array(MYSQLI_ASSOC)){
+            foreach($row as $item){
+                array_push($dbData, $item);
+            }
+        }
+        return $dbData;
+    }
 
 	public function index()
 	{
