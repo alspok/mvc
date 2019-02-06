@@ -118,8 +118,8 @@ class PostsController extends Controller
 
 		if($tblData){
 			$DB = new Database();
-			$dbObject = $DB->insert('tbl_mvc_users')->column('name, password, email, activity')->values('"' . $regData['regname'] . '","' . $regData['regpass'] . '","' . $regData['regemail'] . '","' . TRUE . '"');
-			$queryString = $dbObject->getQuery();
+			$queryString = $DB->insert('tbl_mvc_users')->column('name, password, email, activity')->values('"' . $regData['regname'] . '","' . $regData['regpass'] . '","' . $regData['regemail'] . '","' . TRUE . '"')->getQuery();
+			// $queryString = $dbObject->getQuery();
 			$putQuery = new Db($queryString);
 			$putQuery->connect()->putData();
 			echo 'Registration success.';
