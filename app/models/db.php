@@ -34,14 +34,13 @@ class Db
 	public function getData()
     {
 		$dbData = [];
-		$q = $this->connect();
-        $this->result = $q->query($this->query);
+		$this->connect();
+        $this->result = $this->conn->query($this->queryString);
 
+		$i = 0;
         while($row = $this->result->fetch_array(MYSQLI_ASSOC)){
-            foreach($row as $item){
-                array_push($dbData, $item);
-            }
-        }
+			$dbData[$i++] = $row;
+		}
         return $dbData;
     }
 

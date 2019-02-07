@@ -115,14 +115,9 @@ class PostsController extends Controller
 		
 		$tblData = new DataCompare('tbl_mvc_users', $regData);
 		$tblData->getDbTable();
-
-		if($tblData){
+		if($tblData->dataCompare()){
 			$DB = new Database();
-			$queryString = $DB->insert('tbl_mvc_users')->column('name, password, email, activity')->values('"' . $regData['regname'] . '","' . $regData['regpass'] . '","' . $regData['regemail'] . '","' . TRUE . '"')->getQuery();
-			// $queryString = $dbObject->getQuery();
-			$putQuery = new Db($queryString);
-			$putQuery->connect()->putData();
-			echo 'Registration success.';
+			$DB->insert('tbl_mvc_users')->column('name, password, email, activity')->values('"' . $regData['name'] . '","' . $regData['password'] . '","' . $regData['email'] . '","'. TRUE . '"')->getQuery()->connect()->putData();
 		}
 		else{
 			echo 'Already registred. Please login.';

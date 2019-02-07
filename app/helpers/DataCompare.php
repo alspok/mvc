@@ -8,7 +8,8 @@ class DataCompare
 {
 	public $tblName;
 	public $userData;
-	public $resultData;
+	public $dbData;
+	public $compare;
 
 	public function __construct($tblName, $userData)
 	{
@@ -23,11 +24,24 @@ class DataCompare
 		$query = $dbObject->getQuery();
 
 		$getData = new Db($query);
-		$resultData = $getData->getData();
-		var_dump($resultData);
+		$this->dbData = $getData->getData();
+		var_dump($this->dbData);
+		var_dump($this->userData);
 
-		return $this->resultData;
+		return $this->dbData;
 	}
 
-	
+	public function dataCompare()
+	{
+		$this->compare = TRUE;
+
+		foreach($this->dbData as $dbItem){
+			if($dbItem['email'] === $this->userData['regemail']){
+				$this->compare = FALSE;
+				break;
+			}
+		}
+
+		return $this->compare;
+	}
 }
