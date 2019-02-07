@@ -25,8 +25,6 @@ class DataCompare
 
 		$getData = new Db($query);
 		$this->dbData = $getData->getData();
-		var_dump($this->dbData);
-		var_dump($this->userData);
 
 		return $this->dbData;
 	}
